@@ -1,16 +1,19 @@
-name: 🚀 Auto Deploy (main/release)
+name: 🚀 PROD Build
 
 on:
   push:
     branches:
       - main
       - release
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
 
 jobs:
   build:
-    uses: cabinet-ceipi/infra-devops-pipelines/.github/workflows/build-backend-auto.yml@main
+    uses: brege-ng/infra_devops_pipelines/.github/workflows/build-auto.yml@main
     with:
       dockerfile: ./Dockerfile
       context: .
-    # secrets:
-    #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
