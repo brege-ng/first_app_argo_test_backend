@@ -1,0 +1,16 @@
+name: 🚀 Auto Deploy (main/release)
+
+on:
+  push:
+    branches:
+      - main
+      - release
+
+jobs:
+  build:
+    uses: cabinet-ceipi/infra-devops-pipelines/.github/workflows/build-backend-auto.yml@main
+    with:
+      dockerfile: ./Dockerfile
+      context: .
+    # secrets:
+    #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
